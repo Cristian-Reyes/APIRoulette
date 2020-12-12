@@ -15,5 +15,7 @@ public class RouletteService {
         return rouletteRepository.getAllRoulettes();
     }
 
-
+    public Roulette createRoulette(Roulette roulette){
+        return rouletteRepository.createRoulette(roulette);
+    }
 }

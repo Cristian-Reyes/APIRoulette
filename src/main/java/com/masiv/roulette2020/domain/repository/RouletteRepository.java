@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface RouletteRepository {
     List<Roulette> getAllRoulettes();
+    Roulette createRoulette(Roulette roulette);
 }
