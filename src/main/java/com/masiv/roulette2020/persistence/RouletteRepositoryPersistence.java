@@ -8,6 +8,7 @@ import com.masiv.roulette2020.persistence.mapper.RouletteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RouletteRepositoryPersistence implements RouletteRepository {
@@ -20,12 +21,14 @@ public class RouletteRepositoryPersistence implements RouletteRepository {
         List<EntityRoulette> entityRoulettes = (List<EntityRoulette>) rouletteCrudRepository.findAll();
         return mapper.toRoulettes(entityRoulettes);
     }
-
     @Override
     public Roulette createRoulette(Roulette roulette) {
         EntityRoulette entityRoulette = mapper.toEntityRoulette(roulette);
 
         return mapper.toRoulette(rouletteCrudRepository.save(entityRoulette));
     }
-
+    @Override
+    public Optional<Roulette> openRoulette(int rouletteId) {
+        return rouletteCrudRepository.findById(rouletteId).map(roulette -> mapper.toRoulette(roulette));
+    }
 }
