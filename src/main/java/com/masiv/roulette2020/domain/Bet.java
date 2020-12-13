@@ -29,7 +29,6 @@ public class Bet {
     public Integer getBetNumber() {
         return betNumber;
     }
-
     public void setBetNumber(Integer betNumber) {
         this.betNumber = betNumber;
     }

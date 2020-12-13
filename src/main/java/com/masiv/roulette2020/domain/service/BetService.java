@@ -20,27 +20,30 @@ public class BetService {
         return betList;
     }
     private int numberWinner(){
-        int numberWinner = (int) Math.random()*(36-0+1)+0;
+        int numberWinner = (int) Math.random()*36;
         System.err.println(numberWinner);
         return numberWinner;
     }
     private List<Bet> winnerList(List<Bet> betList,int numberWinner, String colorWinner){
         int aux = 0;
         for (Bet bet:betList) {
-            if(bet.getBetNumber() == null && bet.getBetColor() == colorWinner){
+            if(bet.getBetColor().equals(colorWinner)){
                 bet.setCoins(bet.getCoins()*1.8);
                 betList.set(aux,bet);
+                System.out.println("color");
             }
-            else if(bet.getBetNumber() == numberWinner && bet.getBetColor() == null){
+            else if(bet.getBetNumber() == numberWinner){
                 bet.setCoins(bet.getCoins()*5);
                 betList.set(aux,bet);
+                System.out.println("numero");
             }
             else{
                 bet.setCoins(bet.getCoins()*0);
                 betList.set(aux,bet);
+                System.out.println("ninguno");
             }
+            System.out.println(aux);
             aux++;
-
         }
         return betList;
     }
