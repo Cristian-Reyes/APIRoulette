@@ -1,6 +1,6 @@
 package com.masiv.roulette2020.persistence.entity;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "roulette")
@@ -10,6 +10,8 @@ public class EntityRoulette {
     @Column(name = "id_roulette")
     private Integer idRoulette;
     private Boolean active;
+    @OneToMany(mappedBy = "entityRoulette")
+    private List<EntityRoulette> entityRoulette;
 
     // Getters & Setters
     public Integer getIdRoulette() {
