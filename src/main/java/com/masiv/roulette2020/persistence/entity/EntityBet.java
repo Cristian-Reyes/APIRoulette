@@ -18,7 +18,7 @@ public class EntityBet {
     @ManyToOne
     @JoinColumn(name = "id_roulette", insertable = false,updatable = false)
     private EntityRoulette entityRoulette;
-
+    private Double coins;
     // Getters & Setters
     public Integer getIdBet() {
         return idBet;
@@ -58,5 +58,13 @@ public class EntityBet {
 
     public void setEntityRoulette(EntityRoulette entityRoulette) {
         this.entityRoulette = entityRoulette;
+    }
+
+    public Double getCoins() {
+        return coins;
+    }
+
+    public void setCoins(Double coins) {
+        this.coins = coins;
     }
 }

@@ -29,4 +29,12 @@ public class EntityRoulette {
     public void setActive(Boolean active) {
         this.active = active;
     }
+
+    public List<EntityRoulette> getEntityRoulette() {
+        return entityRoulette;
+    }
+
+    public void setEntityRoulette(List<EntityRoulette> entityRoulette) {
+        this.entityRoulette = entityRoulette;
+    }
 }

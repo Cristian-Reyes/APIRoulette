@@ -19,5 +19,6 @@ public interface RouletteMapper {
     List<Roulette> toRoulettes(List<EntityRoulette> entityRouletteList);
 
     @InheritInverseConfiguration
+    @Mapping(target = "entityRoulette", ignore = true)
     EntityRoulette toEntityRoulette(Roulette roulette);
 }
