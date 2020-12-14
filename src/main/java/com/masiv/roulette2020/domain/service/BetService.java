@@ -28,19 +28,19 @@ public class BetService {
         return betList;
     }
     private int numberWinner(){
-        int numberWinner = (int) Math.random()*36;
+        int numberWinner = (int) Math.floor(Math.random()*36+1);
         System.err.println(numberWinner);
         return numberWinner;
     }
     private List<Bet> winnerList(List<Bet> betList,int numberWinner, String colorWinner){
         int aux = 0;
         for (Bet bet:betList) {
-            if(bet.getBetColor().equals(colorWinner)){
+            if(bet.getBetColor() == colorWinner){
                 bet.setCoins(bet.getCoins()*1.8);
                 betList.set(aux,bet);
                 System.out.println("color");
             }
-            else if(bet.getBetNumber().equals(numberWinner)){
+            else if(bet.getBetNumber() == numberWinner){
                 bet.setCoins(bet.getCoins()*5);
                 betList.set(aux,bet);
                 System.out.println("numero");
