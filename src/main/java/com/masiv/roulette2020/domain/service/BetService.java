@@ -1,21 +1,30 @@
 package com.masiv.roulette2020.domain.service;
 
 import com.masiv.roulette2020.domain.Bet;
+import com.masiv.roulette2020.domain.Roulette;
 import com.masiv.roulette2020.domain.repository.BetRepository;
+import com.masiv.roulette2020.domain.repository.RouletteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BetService {
     @Autowired
     private BetRepository betRepository;
+    @Autowired
+    private RouletteRepository rouletteRepository;
 
     public List<Bet> findByIdRoulette(int idRoulette){
+        Optional<Roulette> roulette = rouletteRepository.findRoulette(idRoulette);
+        if(!roulette.get().isActive()){return null;}
         List<Bet> betList = betRepository.findByIdRoulette(idRoulette);
+        if (betList.isEmpty()){return null;}
         int numberWinner = numberWinner();
         String colorWinner = (numberWinner%2==0)?"rojo":"negro";
         betList = winnerList(betList,numberWinner,colorWinner);
+        betRepository.deletedByIdRoulette(idRoulette);
         return betList;
     }
     private int numberWinner(){
@@ -31,7 +40,7 @@ public class BetService {
                 betList.set(aux,bet);
                 System.out.println("color");
             }
-            else if(bet.getBetNumber() == numberWinner){
+            else if(bet.getBetNumber().equals(numberWinner)){
                 bet.setCoins(bet.getCoins()*5);
                 betList.set(aux,bet);
                 System.out.println("numero");

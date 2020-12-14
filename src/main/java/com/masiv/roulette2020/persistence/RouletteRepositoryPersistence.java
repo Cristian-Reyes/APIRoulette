@@ -31,4 +31,9 @@ public class RouletteRepositoryPersistence implements RouletteRepository {
     public Optional<Roulette> openRoulette(int rouletteId) {
         return rouletteCrudRepository.findById(rouletteId).map(roulette -> mapper.toRoulette(roulette));
     }
+
+    @Override
+    public Optional<Roulette> findRoulette(int rouletteId) {
+        return rouletteCrudRepository.findById(rouletteId).map(roulette -> mapper.toRoulette(roulette));
+    }
 }

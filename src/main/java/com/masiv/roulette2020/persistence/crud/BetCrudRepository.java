@@ -9,4 +9,7 @@ public interface BetCrudRepository extends CrudRepository<EntityBet,Integer> {
 
     @Query(value = "SELECT * FROM bet WHERE id_roulette = ?1",nativeQuery = true)
     List<EntityBet> findByidRoulette(int idRoulette);
+
+    @Query(value = "DELETED FROM bet WHERE id_roulette = ?1",nativeQuery = true)
+    void deletedByidRoulette(int idRoulette);
 }

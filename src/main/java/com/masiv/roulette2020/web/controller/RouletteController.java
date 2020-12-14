@@ -19,8 +19,10 @@ public class RouletteController {
     public ResponseEntity<List<Roulette>> getAllRoulette(){
         return new ResponseEntity<>(rouletteService.getAllRoulette(), HttpStatus.OK);
     }
-    @PostMapping("/createRoulette")
-    public ResponseEntity<Integer> createRoulette(@RequestBody Roulette roulette){
+    @GetMapping("/createRoulette")
+    public ResponseEntity<Integer> createRoulette(){
+        Roulette roulette = new Roulette();
+        roulette.setActive(false);
         return new ResponseEntity<>(rouletteService.createRoulette(roulette).getRouletteId(),HttpStatus.CREATED);
     }
     @GetMapping("/openRoulette/{id}")

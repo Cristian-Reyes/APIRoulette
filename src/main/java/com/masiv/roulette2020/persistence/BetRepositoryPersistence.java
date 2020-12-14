@@ -21,4 +21,9 @@ public class BetRepositoryPersistence implements BetRepository {
     public List<Bet> findByIdRoulette(int idRoulette) {
         return mapper.toBets(betCrudRepository.findByidRoulette(idRoulette));
     }
+
+    @Override
+    public void deletedByIdRoulette(int idRoulette) {
+        betCrudRepository.deletedByidRoulette(idRoulette);
+    }
 }

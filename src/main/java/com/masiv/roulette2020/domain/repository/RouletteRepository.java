@@ -8,4 +8,5 @@ public interface RouletteRepository {
     List<Roulette> getAllRoulettes();
     Roulette createRoulette(Roulette roulette);
     Optional<Roulette> openRoulette(int rouletteId);
+    Optional<Roulette> findRoulette(int rouletteId);
 }
