@@ -16,18 +16,6 @@ public class BetRepositoryPersistence implements BetRepository {
     @Autowired
     private BetMapper mapper;
 
-    @Override
-    public List<Bet> getAllBets() {
-        List<EntityBet> entityBets = (List<EntityBet>) betCrudRepository.findAll();
-        return mapper.toBets(entityBets);
-    }
-
-    @Override
-    public Bet createBet(Bet bet) {
-        EntityBet entitybet = mapper.toEntityBet(bet);
-
-        return mapper.toBet(betCrudRepository.save(entitybet));
-    }
 
     @Override
     public List<Bet> findByIdRoulette(int idRoulette) {

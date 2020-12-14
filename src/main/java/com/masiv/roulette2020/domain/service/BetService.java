@@ -10,8 +10,7 @@ import java.util.List;
 public class BetService {
     @Autowired
     private BetRepository betRepository;
-    public List<Bet> getAllBets(){return betRepository.getAllBets();}
-    public Bet createBet(Bet bet){return betRepository.createBet(bet);}//BUG
+
     public List<Bet> findByIdRoulette(int idRoulette){
         List<Bet> betList = betRepository.findByIdRoulette(idRoulette);
         int numberWinner = numberWinner();
